@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MJ Ride & Rent</title>
+  <link rel="shortcut icon" href="./files/travel-icon.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script src="https://kit.fontawesome.com/f5b6191954.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+     
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body,
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #0d1b2a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      z-index: 999;
+      list-style: none;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      color: rgb(10, 10, 10);
+      font-size: 24px;
+      font-weight: 600;
+      text-decoration: none;
+      background-color: rgb(255, 255, 255);
+    
+    }
+
+    .logo-title img {
+      height: 40px;
+      margin-right: 0px;
+       
+    }
+
+    .navbar {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+     
+    }
+
+    .navbar a {
+      color: white;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+      background: rgb(222, 80, 80);
+      color: black;
+    }
+
+    .checkbtn {
+      font-size: 22px;
+      color: white;
+      display: none;
+      cursor: pointer;
+    }
+
+    #check {
+      display: none;
+    }
+
+    .content {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .responsive-layout {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .title {
+      margin-top: 60px;
+      padding: 20px;
+      text-shadow: 2px 2px 4px black;
+    }
+
+    .title h1 {
+      font-size: 10vh;
+    }
+
+    .title p {
+      font-size: 3vh;
+      margin-top: 10px;
+    }
+
+    .video-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: black;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .button-container {
+      margin-top: 30px;
+    }
+
+    .button {
+      padding: 10px 25px;
+      font-size: 20px;
+      background: white;
+      color: black;
+      border-radius: 25px;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .button:hover {
+      background: black;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 20px;
+        position: fixed;
+      }
+
+      .navbar {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: #0d1b2a;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+      }
+
+      #check:checked~.navbar {
+        display: flex;
+      }
+
+      .checkbtn {
+        display: block;
+      }
+
+      .responsive-layout {
+        position: relative;
+        height: auto;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 20px;
+        color: white;
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        z-index: 0;
+      }
+
+      .video-wrapper video {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .title {
+        margin-top: 0;
+        padding: 0;
+      }
+
+      .title h1 {
+        font-size: 6vh;
+      }
+
+      .title p {
+        font-size: 2.2vh;
+      }
+
+      .button-container {
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .button {
+        font-size: 18px;
+        padding: 8px 20px;
+      }
+    }
+
+    section {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 32px;
+      color: #0d1b2a;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    /*footer*/
+    .footer {
+    background-color: #0d1b2a;
+    color: white;
+    /* padding: 40px 20px 0px; */
+    text-align: center;
+}
+
+.footer-content {
+    /* gap: 30px; */
+    /* margin: 0px 30px; */
+    /* padding: 0px 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 0 10px;
+    position: relative;
+    z-index: 0
+}
+
+.footer-section {
+    text-align: left;
+    margin: 35px 20px 0px;
+    z-index: 1
+}
+
+/* Footer Abouts Section */
+.about-section {
+    flex-basis: 26%;
+}
+
+.detail-content {
+    padding-left: 5%
+}
+
+.detail-content .detail-content-slogan {
+    color: #fff;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.75;
+    margin-top: 6px
+}
+
+.detail-content .follow-apps {
+    align-items: center;
+    display: flex;
+    margin-top: 10px
+}
+
+.detail-content .follow-apps .follow-apps-text {
+    color: #ccc;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.17;
+    margin: 0px 11px 0 0;
+}
+
+.detail-content .follow-apps .social-icons {
+    align-items: center;
+    align-self: flex-end;
+    display: flex;
+    justify-content: center
+}
+
+.detail-content .follow-apps .social-icons a {
+    font-size: 15px;
+    margin: 5px;
+    height: 20px;
+    width: 20px;
+    color: #415a77;
+    background-color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.detail-content .follow-apps .social-icons a:hover {
+    transform: scale(1.2);
+}
+
+.about-section .footer-logo-title {
+    display: flex;
+    color: white;
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.about-section .footer-logo-title .footer-logo {
+    width: 30px;
+    margin-right: 13px;
+}
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.footer-section h4::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 2px;
+    background: white;
+    margin: 5px auto;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 0;
+}
+
+.footer-section ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 12px;
+}
+
+.contact-section p {
+    font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+
+
+.newsletter form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    padding: 0;
+    gap: 6px;
+}
+
+.newsletter input {
+    width: 80%;
+    padding: 8px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.newsletter button {
+    background: #ff9800;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 12px;
+}
+
+.newsletter button:hover {
+    background: #e68900;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e0e1dd;
+    margin: 0px 30px;
+    margin-top: 20px;
+    padding: 15px 0px;
+}
+
+.footer-bottom p {
+    font-size: 11px;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+@media (max-width: 1020px) {
+
+    .footer-section {
+        margin: 25px 10px 0px;
+    }
+
+    /* Footer Abouts Section */
+    .about-section {
+        flex-basis: 26%;
+    }
+
+    .detail-content {
+        padding-left: 5%
+    }
+
+    .detail-content .detail-content-slogan {
+        font-size: 12px;
+        margin-top: 6px
+    }
+
+    .detail-content .follow-apps {
+        margin-top: 10px
+    }
+
+    .detail-content .follow-apps .follow-apps-text {
+        font-size: 12px;
+        margin: 0px 11px 0 0;
+    }
+
+    .detail-content .follow-apps .social-icons a {
+        font-size: 15px;
+        margin: 5px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .about-section .footer-logo-title {
+        font-size: 19px;
+        margin-bottom: 10px;
+    }
+
+    .about-section .footer-logo-title .footer-logo {
+        width: 30px;
+        margin-right: 13px;
+    }
+
+    .footer-section h4 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .footer-section h4::after {
+        width: 70px;
+        height: 2px;
+        margin: 5px auto;
+    }
+
+    .footer-section ul li a {
+        font-size: 12px;
+    }
+
+    .contact-section p {
+        font-size: 14px;
+    }
+
+    .newsletter form {
+        padding: 0;
+        gap: 6px;
+    }
+
+    .newsletter input {
+        width: 80%;
+        padding: 8px;
+        margin: 5px 0;
+    }
+
+    .newsletter button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .footer-bottom {
+        margin: 0px 30px;
+        padding: 15px 0px;
+    }
+
+    .footer-bottom p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: px) {
+
+    .footer-section {
+        margin: 25px 10px 0px;
+    }
+
+    /* Footer Abouts Section */
+    .about-section {
+        flex-basis: 26%;
+    }
+
+    .detail-content {
+        padding-left: 5%
+    }
+
+    .detail-content .detail-content-slogan {
+        font-size: 12px;
+        margin-top: 6px
+    }
+
+    .detail-content .follow-apps {
+        margin-top: 10px
+    }
+
+    .detail-content .follow-apps .follow-apps-text {
+        font-size: 12px;
+        margin: 0px 11px 0 0;
+    }
+
+    .detail-content .follow-apps .social-icons a {
+        font-size: 15px;
+        margin: 5px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .about-section .footer-logo-title {
+        font-size: 19px;
+        margin-bottom: 10px;
+    }
+
+    .about-section .footer-logo-title .footer-logo {
+        width: 30px;
+        margin-right: 13px;
+    }
+
+    .footer-section h4 {
+        font-size: 0.87rem;
+        margin-bottom: 10px;
+    }
+
+    .footer-section h4::after {
+        width: 70px;
+        height: 2px;
+        margin: 5px auto;
+    }
+
+    .footer-section ul li a {
+        font-size: 12px;
+    }
+
+    .contact-section p {
+        font-size: 11px;
+    }
+
+    .newsletter input {
+        width: 70%;
+        padding: 4px 8px;
+        font-size: 9px;
+    }
+
+    .newsletter button {
+        padding: 4px 8px;
+        font-size: 9px;
+    }
+
+    .footer-bottom p {
+        font-size: 10px;
+    }
+}
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <div class="content" id="home">
+      <nav>
+        <a href="/" class="logo-title">
+          <img src="./files/mjlogo.jpg" alt="Logo" />
+           MJ Ride & Rent    
+        </a>
+
+        <input type="checkbox" id="check" />
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+
+        <ul class="navbar">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#cars">Cars</a></li>
+           <li><a href="#contact-us">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="responsive-layout">
+        <div class="title">
+          <h1>MJ Ride & Rent</h1>
+          <p>Plan your trip with us and travel around the world with the most affordable packages!</p>
+        </div>
+
+        <div class="video-wrapper">
+          <video src="./files/ap.mp4" autoplay muted loop></video>
+        </div>
+
+        <div class="button-container">
+          <a href="./book.html" class="button">Book Now!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sections matching nav links -->
+ <section id="about-us" style="background: linear-gradient(135deg, #e0f7ff, #f4f9ff); padding: 80px 20px; position: relative; overflow: hidden;">
+  <style>
+    #about-us .bubble-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    #about-us .bubble-bg::before,
+    #about-us .bubble-bg::after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 20%, transparent 70%);
+      animation: floatBubbles 20s linear infinite;
+    }
+
+    #about-us .bubble-bg::after {
+      animation-delay: 10s;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 60%);
+    }
+
+    @keyframes floatBubbles {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    #about-us .about-content {
+      max-width: 1200px;
+      margin: auto;
+      
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    #about-us .about-image {
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #about-us .about-image img {
+      max-width: 100%;
+      width: 500px;
+      animation: floatCar 4s ease-in-out infinite;
+    }
+
+    @keyframes floatCar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    #about-us .about-main-heading {
+      margin-top: 0; /* this is key */
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #333;
+  background-color: #7cade4;
+  padding: 10px;
+  z-index: 2;
+  overflow: hidden;
+    }
+
+    #about-us .about-text {
+      padding: 20px;
+      
+    }
+
+    #about-us .about-text h2 {
+      font-size: 40px;
+      color: #b6bbc1;
+      margin-bottom: 20px;
+    }
+
+    #about-us .about-text h2 span {
+      color: #0077b6;
+    }
+
+    #about-us .about-text p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #333;
+      overflow: hidden;
+    }
+
+    #about-us .about-text ul {
+      margin: 25px 0;
+      padding-left: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    #about-us .about-text li {
+      margin-bottom: 10px;
+    }
+
+    #about-us .mission-box {
+      background: #ffffffee;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-top: 20px;
+    }
+
+    #about-us .mission-box h3 {
+      font-size: 22px;
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+
+    #about-us .mission-box p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      #about-us .about-image img {
+        width: 100%;
+       
+      }
+
+      #about-us .about-text h2 {
+        font-size: 28px;
+      }
+
+      #about-us .about-image {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+
+  <div class="bubble-bg"></div>
+
+  <h1 class="about-main-heading">About Us</h1>
+
+  <div class="about-content">
+    <div class="about-image">
+      <img src="https://digitalsynopsis.com/wp-content/uploads/2014/06/supercar-wallpapers-bugatti-4.jpg" alt="Car Rental">
+    </div>
+
+    <div class="about-text">
+      <h2><span>MJ Ride & Rent</span></h2>
+      <p>
+        At <strong>MJ Ride & Rent</strong>, we believe in more than just providing vehicles – we deliver experiences. Whether you're heading to a business meeting, a weekend getaway, or a cross-country road trip, our service ensures every mile is smooth and enjoyable.
+      </p>
+      <ul>
+        <li>🚗 <strong>Wide Vehicle Range</strong>: From economy to luxury – all under one roof.</li>
+        <li>📱 <strong>Instant Booking</strong>: Book anytime, anywhere using our website.</li>
+        <li>🛡️ <strong>Safety First</strong>: Sanitized, insured, and maintained vehicles.</li>
+        <li>⏱️ <strong>Flexible Plans</strong>: Hourly, daily, weekly, and monthly rental options.</li>
+        <li>💬 <strong>24/7 Support</strong>: Our team is always a call away.</li>
+      </ul>
+      <p>
+        Since our inception, MJ Ride & Rent has been driven by one goal: to make vehicle rentals simple, accessible, and affordable for everyone.
+      </p>
+    </div>
+
+    <div class="mission-box">
+      <h3>Our Mission 🚀</h3>
+      <p>To become the most trusted mobility partner for individuals and businesses by offering top-quality cars with unbeatable service.</p>
+      <h3>Our Vision 🔭</h3>
+      <p>Redefining urban travel with accessible, flexible, and affordable rides for every journey.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Google Font (Optional) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<!-- Services Section -->
+<!-- Our Car Rental Services Section -->
+ <section class="services" id="services" >
+  <h2>Our Car Rental Services</h2>
+  <div class="service-cards">
+    <div class="service-card">
+      <i class="fas fa-clock service-icon"></i>
+      <h3>24-Hour Service</h3>
+      <p>Round-the-clock availability to ensure you have a ride whenever you need it.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-car-side service-icon"></i>
+      <h3>Self Drive</h3>
+      <p>Freedom to drive yourself with our easy and flexible self-drive options.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-calendar-week service-icon"></i>
+      <h3>Weekly / Monthly Rentals</h3>
+      <p>Affordable rental plans for extended durations — perfect for long stays.</p>
+    </div>
+    
+    <div class="service-card">
+      <i class="fas fa-user-shield service-icon"></i>
+      <h3>Chauffeur Service</h3>
+      <p>Professional drivers for a relaxed and safe travel experience.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-gift service-icon"></i>
+      <h3>Loyalty Discounts</h3>
+      <p>Special discounts for repeat customers — because we value your loyalty!</p>
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 50px 20px;
+    background-color: #f5f9fc;
+    text-align: center;
+  }
+
+  .services h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+   
+    
+      background-color: #7cade4;
+       text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #333;
+      background-color: #7cade4;
+      
+  }
+
+  .service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 55px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .service-icon {
+    font-size: 36px;
+    color: #1d3557;
+    margin-bottom: 15px;
+  }
+
+  .service-card h3 {
+    color: #1d3557;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .service-card p {
+    font-size: 16px;
+    color: #444;
+  }
+
+  @media screen and (max-width: 600px) {
+    .service-icon {
+      font-size: 30px;
+    }
+
+    .services h2 {
+      font-size: 24px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<style>
+ /* .rent-section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .rent-section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+       text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #333;
+      background-color: #7cade4;
+      margin: 0 0 20px 0;
+      padding: 10px;
+
+    } */
+     .rent-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.rent-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  text-align: center;
+  color: #0b0a0a;
+  background-color: #7cade4;
+  width: 100%;
+  padding: 20px 0;
+  margin: 20;
+  display: block;
+  box-sizing: border-box;
+}
+
+
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .car-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .car-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .car-box img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .car-details {
+      padding: 20px;
+    }
+
+    .car-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .car-price {
+      font-size: 18px;
+      color: #e67e22;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .fuel-type {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .rent-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .rent-btn:hover {
+      background: #128C7E;
+    }
+  </style>
+</head>
+<body>
+  
+  <section  id="cars" class="rent-section" >
+    <h2>Cars</h2>
+    <div class="car-grid">
+
+      <!-- Maruti Dzire -->
+      <div class="car-box">
+        <img src="./maruti-suzuki.png" alt="Maruti Dzire">
+        <div class="car-details">
+          <div class="car-title">Maruti Dzire</div>
+          <div class="car-price">₹1,350/day</div>
+          <div class="fuel-type">Fuel: Petrol, CNG</div>
+          <a href="https://wa.me/918519975297?text=I%20would%20like%20to%20book%20the%20Maruti%20Dzire%20for%20rent." class="rent-btn" target="_blank">Rent Now</a>
+        </div>
+      </div>
+
+      <!-- Maruti Ertiga -->
+      <div class="car-box">
+        <img src="./ertiga.png" alt="Maruti Ertiga">
+        <div class="car-details">
+          <div class="car-title">Maruti Ertiga</div>
+          <div class="car-price">₹1,450/day</div>
+          <div class="fuel-type">Fuel: Petrol, CNG</div>
+          <a href="https://wa.me/918519975297?text=I%20would%20like%20to%20book%20the%20Maruti%20Ertiga%20for%20rent." class="rent-btn" target="_blank">Rent Now</a>
+        </div>
+      </div>
+
+      <!-- Honda Amaze -->
+      <div class="car-box">
+        <img src="./amaze.png" alt="Honda Amaze">
+        <div class="car-details">
+          <div class="car-title">Honda Amaze</div>
+          <div class="car-price">₹1,400/day</div>
+          <div class="fuel-type">Fuel: Petrol</div>
+          <a href="https://wa.me/918519975297?text=I%20would%20like%20to%20book%20the%20Honda%20Amaze%20for%20rent." class="rent-btn" target="_blank">Rent Now</a>
+        </div>
+      </div>
+
+      <!-- Maruti Swift -->
+      <div class="car-box">
+        <img src="./swift.png" alt="Maruti Swift">
+        <div class="car-details">
+          <div class="car-title">Maruti Swift</div>
+          <div class="car-price">₹1,300/day</div>
+          <div class="fuel-type">Fuel: Petrol, CNG</div>
+          <a href="https://wa.me/918519975297?text=I%20would%20like%20to%20book%20the%20Maruti%20Swift%20for%20rent." class="rent-btn" target="_blank">Rent Now</a>
+        </div>
+      </div>
+
+      <!-- Toyota Glanza -->
+      <div class="car-box">
+        <img src="./glanza-exterior.png" alt="Toyota Glanza">
+        <div class="car-details">
+          <div class="car-title">Toyota Glanza</div>
+          <div class="car-price">₹1,500/day</div>
+          <div class="fuel-type">Fuel: Petrol, CNG</div>
+          <a href="https://wa.me/918519975297?text=I%20would%20like%20to%20book%20the%20Toyota%20Glanza%20for%20rent." class="rent-btn" target="_blank">Rent Now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+
+  
+
+
+  <section class="contact-us-section" id="contact-us">
+  <style>
+    .contact-us-section {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px 25px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .contact-us-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #007BFF;
+    }
+
+    .contact-us-section p {
+      font-size: 1.1rem;
+      margin: 12px 0;
+      /* Remove flex here */
+      /* display: flex; */
+      /* align-items: center; */
+      /* gap: 6px; */
+      /* flex-wrap: wrap; */
+      text-align: left;
+    }
+
+    .contact-us-section a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-us-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* Inline flex container for phone + icon */
+    .phone-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .phone-link {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .phone-link svg {
+      width: 18px;
+      height: 18px;
+      fill: #007BFF;
+      transition: fill 0.3s ease;
+    }
+
+    .phone-link:hover svg {
+      fill: #0056b3;
+    }
+
+    @media (max-width: 480px) {
+      .contact-us-section {
+        margin: 20px 15px;
+        padding: 20px;
+      }
+      .contact-us-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  
+  <h2 class="contact-heading">Contact</h2>
+
+  
+  
+  <p>
+    Reach us at 
+    <a href="mailto:contact@neotravels.com">contact@neotravels.com</a> or call us at 
+    <span class="phone-container">
+      <a href="tel:+918519975297">8519975297</a>
+      <a class="phone-link" href="tel:8519975297" aria-label="Call 8519975297">
+        <!-- Phone SVG icon -->
+        
+      </a>
+    </span>.
+  </p>
+  <p>We’re here to help you travel the world!</p>
+  <p>Our office hours are Monday to Friday, 9 AM to 6 PM.</p>
+  <p>
+    Follow us on 
+    <a href="https://www.facebook.com/neotravels" target="_blank" rel="noopener noreferrer">Facebook</a> and 
+    <a href="https://www.instagram.com/neotravels" target="_blank" rel="noopener noreferrer">Instagram</a> for the latest updates and offers.
+  </p>
+</section>
+
+
+  
+
+</body>
+  <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about-section">
+                <div class="detail-content">
+                    <a href="/" class="footer-logo-title">
+                        <img src="files/logocar.jpg" alt="Neo Travels Logo" class="footer-logo" title="Neo Travels">
+                        <p class="footer-title">MJ Ride & Rent</p>
+
+                    </a>
+                    <p class="detail-content-slogan">MJBrothers Ride & Rent – Your reliable partner for budget-friendly rides, flexible rentals, and smooth travel experiences. Whether it's a short trip or a long journey, ride smart, rent easy.</p>
+                    <!-- <div class="follow-apps">
+                        <p class="follow-apps-text">Follow us for updates</p>
+                       
+                    </div> -->
+                    <!-- Add this inside your <head> if not already included -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<div class="follow-apps">
+  <p class="follow-apps-text">Follow us for updates</p>
+  
+  <!-- Social Media Icons -->
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yourpage" target="_blank" aria-label="Facebook">
+      <i class='bx bxl-facebook'></i>
+    </a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank" aria-label="Instagram">
+      <i class='bx bxl-instagram'></i>
+    </a>
+  </div>
+</div>
+                </div>
+            </div>
+
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                   
+                    
+                    <li><a href="#cars">Cars</a></li>
+                    
+                    <li><a href="#contact-us">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div class="footer-section newsletter">
+                <h4>Subscribe to Our Newsletter</h4>
+                <form action="#">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section contact-section">
+                <h4>Contact Us</h4>
+                <p>Email: n.nihalahmed1@gmail.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Address: Chennai, India</p>
+            </div>
+
+
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>Copyright © 2025 MJ Ride & Rent. All rights reserved.</p>
+            <p>Website developed by: <strong>URBAN_TOUCH_SERVICES</strong></p>
+        </div>
+    </footer>
+
+</html>
